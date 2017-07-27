@@ -42,3 +42,24 @@ cacheSolve <- function(x, ...) {
         x$setInverse(m)
         m
 }
+
+## Following is the small sample to easy the peer review
+
+# define a 3 by 3 matrix with elements eqaul to random number
+# with uniform distribution from 1 to 10 and rounded by 0
+myMatrix <- matrix(round(runif(9, min = 1, max = 10)), 3, 3)
+
+# general the special list with myMatrix
+m = makeCacheMatrix((myMatrix))
+
+# this command gives the result the "get" matrix
+m$get()
+
+# using function cacheSolve to get the inverse matrix
+# note that we get the result without the message "getting cached data"
+cacheSolve(m)
+
+# do again the same command and get the same result
+# but with the message "getting cached data" 
+# meaning that the inverse is cached from the first function
+cacheSolve(m)
